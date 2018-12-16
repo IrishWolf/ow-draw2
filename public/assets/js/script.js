@@ -1,10 +1,11 @@
-// TODO: Create new field to store whether someone has guessed the correct word, cannot use hasAlreadyWon
-// TODO: Change the Timers to deploy 
 // TODO: Change to a new Server
 // TODO: Allow server to handle the random number generator so the revealed letters are equal among all devices
     var IO = {
         init : function(){
-            var url = 'http://ow-draw.herokuapp.com/';
+            //var url = "http://localhost:5000";
+            var url = 'https://ow-draw.herokuapp.com/';
+            //var url = 'https://ancient-fjord-8441.herokuapp.com';
+            //var url = 'https://129.97.134.17:5000;'
             IO.socket = io.connect(url);
             IO.bindEvents();
 
@@ -112,11 +113,11 @@
     var reveal_interval = 0;
     var preventCursorRace = false; //stops a residual cursor after a new game starts
     var displayHelp ={ lobby:false, drawer:false, guesser:false};
-    var drawThickness = 10;
+    var drawThickness = 5;
     var color = '#000';
     var ticker;
-    var turnLength_global = 10; //!!!Change
-    var end_round_wait_time = 10; //!!!Change
+    var turnLength_global = 90;
+    var end_round_wait_time = 5;
     var currentTimer = 0;
     var firstCorrectAnswer = true;
     var turn = 0;
@@ -127,7 +128,7 @@
         FirstAnswer: 5,
         SubsequentAnswer: 2,
         DrawerPoints: 2,
-        FailDrawDeduction: 5
+        FailDrawDeduction: 0
     };
     var App = {
         gameID:0,
@@ -478,7 +479,7 @@
             //console.log(chatHistory);
             App.gameState = "lobby";
             //console.log("i know who won");
-            if(App.myRole == 'Host')//!!!Change
+            if(App.myRole == 'Host')
                 IO.socket.emit('endGameLobby', App.gameID);
                 //IO.socket.emit('startGame',App.gameID);
             //console.log(chatHistory);
@@ -489,7 +490,7 @@
                 $('#players_waiting').append('<p>'+App.players[i].playerName+'</p>');
             }
         },
-        gameEndedLobby: function(){ //!!!Change
+        gameEndedLobby: function(){
             $('#main_area').html(App.$end_round_lobby);
 
             if(App.players[turn].playerName == App.myName){
