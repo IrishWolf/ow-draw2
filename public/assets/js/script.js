@@ -4,7 +4,7 @@
 // TODO: Allow server to handle the random number generator so the revealed letters are equal among all devices
     var IO = {
         init : function(){
-            var url = 'https://ow-draw.herokuapp.com/';
+            var url = 'http://ow-draw.herokuapp.com/';
             IO.socket = io.connect(url);
             IO.bindEvents();
 
