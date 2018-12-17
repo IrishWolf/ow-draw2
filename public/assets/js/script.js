@@ -2,6 +2,7 @@
 // TODO: Allow server to handle the random number generator so the revealed letters are equal among all devices
     var IO = {
         init : function(){
+            //var url = "http://localhost:5000";
             var url = 'https://ow-draw.herokuapp.com/';
             IO.socket = io.connect(url);
             IO.bindEvents();
@@ -162,7 +163,7 @@
             $(window).resize(App.recalculateDimensions);
             window.onbeforeunload = function(){
                 if(App.gameState == 'playing')
-                    return 'You are Currently in a game. Are you sure you want to leave?'
+                    return 'Du bist mitten in einem Spiel, willst du wirklich gehen? o__o'
             };
             window.onunload = App.onUserLeave;
         },
@@ -184,8 +185,8 @@
         displayNewGameScreen : function(data){
             App.gameState = 'lobby';
             $('#main_area').html((data.playing)?App.$in_progress_lobby:App.$lobby);
-            $('#instructions').html("<h1>Game ID: "+App.gameID+"</h1><p>Give your friends this ID to join or this <a href='http://draw-prototype.herokuapp.com/g/"+App.gameID+"'>link</a></p><h1>Users</h1>");
-            $('#room_number_header').html('Game ID: '+ App.gameID);
+            $('#instructions').html("<h1>Lobby ID: "+App.gameID+"</h1><p>Gib deinen Freunden die Lobby-ID, damit sie dir beitreten können.</p><h1>Spieler*innen</h1>");
+            $('#room_number_header').html('| &nbsp; &nbsp; &nbsp; Lobby ID: '+ App.gameID);
             $("#chat_area").html(App.$chat_template);
             $('#messages').append(chatHistory);
             App.$cont = $('#chat');
@@ -241,8 +242,8 @@
                 displayHelp.lobby = false;
                 }
             }
-            var userList = "<li class='pure-menu-item'>Users</li>";
-            var pointsList = "<li class='pure-menu-item'>Score</li>";
+            var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
+            var pointsList = "<li class='pure-menu-item'>Punkte</li>";
             for(var i = 0; i < data.length; i++){
                 userList = userList + "<li id='user"+data[i].mySocketID+"' class='pure-menu-item'>"+data[i].playerName+"</li>";
                 pointsList = pointsList + "<li id='"+data[i].mySocketID+"score' class='pure-menu-item'>"+data[i].myPoints+"</li>";
@@ -262,7 +263,7 @@
             //console.log(App.word);
             //console.log('App.hasAlreadyWon = '+App.hasAlreadyWon);
             if (App.gameState == "playing" && chat_message.toUpperCase().indexOf(App.word) != -1 && App.gameRole != 'drawer' && !App.hasAlreadyWon){
-                $("#drawer_word").html("You Guessed the Right Word: "+App.word);
+                $("#drawer_word").html("Du hast das richtige Wort erraten: "+App.word);
                 App.hasAlreadyWon = true;
                 data= {name:App.myName, gameID:App.gameID, socketID:App.mySocketID};
                 IO.socket.emit('givePoints',data);
@@ -325,7 +326,7 @@
             App.hasAlreadyWon = false;
             App.gameRole = (App.mySocketID==App.players[turn].mySocketID?"drawer":"guesser");
             App.word=data.word;
-            $("#current-word").html((App.gameRole=="drawer")?"Word: "+App.word:"");
+            $("#current-word").html((App.gameRole=="drawer")?"Dein Wort: "+App.word:"");
             App.canvas.on('mousedown',function(e){
                 App.ctx.beginPath();
                 if(App.gameRole == "drawer"){
@@ -366,10 +367,10 @@
             if(App.gameRole == "drawer"){
                 //console.log("i am the drawer");
                 //console.log(App.word);
-                $("#paper").css("cursor","url('http://draw-prototype.herokuapp.com/assets/img/pencil.png') 0 100, pointer");
+                $("#paper").css("cursor","url('http://ow-draw.herokuapp.com/assets/img/pencil.png') 0 100, pointer");
                 $("#palette_area").html(App.$palette);
-                $("#your_role").html("You are the Drawer");
-                $("#drawer_word").html("The Word is: "+App.word);
+                $("#your_role").html("Du bist jetzt dran!");
+                $("#drawer_word").html("Dein Wort lautet: "+App.word);
                 if(displayHelp.drawer == true){
                     startDrawerIntro();
                     displayHelp.drawer = false;
@@ -388,8 +389,8 @@
                         else
                            hint = hint+'_ ';
                 }
-                $("#your_role").html("You are a Guesser");
-                $("#drawer_word").html("Hint&nbsp;&nbsp&nbsp;"+hint);
+                $("#your_role").html("Du darfst raten!");
+                $("#drawer_word").html("Hinweis&nbsp;&nbsp&nbsp;"+hint);
                 if(displayHelp.guesser == true){
                     startGuesserIntro();
                     displayHelp.guesser = false;
@@ -397,7 +398,7 @@
                 //console.log("i am the guesser");
                 //console.log("i dont know the word is"+ App.word);
             }
-            $("#user"+App.players[turn].mySocketID).html(App.players[turn].playerName+' (drawer)');
+            $("#user"+App.players[turn].mySocketID).html(App.players[turn].playerName+' (Zeichner*in)');
             
             //console.log(App.word + "length = " + App.word.length);
             letters_to_reveal = [];
@@ -453,8 +454,8 @@
         gameEnded: function(data){
             //update points
             preventCursorRace = true;   //tells everyone to stop receiving cursor mousemove signals
-            var userList = "<li class='pure-menu-item'>Users</li>";
-            var pointsList = "<li class='pure-menu-item'>Score</li>";
+            var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
+            var pointsList = "<li class='pure-menu-item'>Punkte</li>";
             for(var i = 0; i < App.players.length; i++){
                 userList = userList + "<li id='user"+App.players[i].mySocketID+"' class='pure-menu-item'>"+App.players[i].playerName+"</li>";
                 pointsList = pointsList + "<li id='"+App.players[i].mySocketID+"score' class='pure-menu-item'>"+App.players[i].myPoints+"</li>";
@@ -491,10 +492,10 @@
             $('#main_area').html(App.$end_round_lobby);
 
             if(App.players[turn].playerName == App.myName){
-                $('#next_drawer').html("You Are ");
+                $('#next_drawer').html("Du bist als nächstes dran mit Zeichnen!");
             }
             else{
-                $('#next_drawer').html(App.players[turn].playerName + " is ");
+                $('#next_drawer').html(App.players[turn].playerName + " ist als nächstes dran mit Zeichnen!");
             }
 
             App.startTimer(end_round_wait_time, false);
@@ -507,13 +508,13 @@
             }
             console.log(App.players);
             if(correct_count == App.players.length - 1){
-                $('#correct_count').html("All Players ");
+                $('#correct_count').html("Alle Spieler*innen konnten das Wort erraten!");
             }
             else if(correct_count == 1){
-                $('#correct_count').html("1 Player ");
+                $('#correct_count').html("1 Spieler*in konnte das Wort erraten!");
             }
             else{
-                $('#correct_count').html(correct_count + " Players ");
+                $('#correct_count').html(correct_count + " Spieler*innen konnten das Wort erraten!");
             }
         },
         startTimer: function(turnLength, start){
@@ -673,7 +674,7 @@
             temp_hint[letters_to_reveal[index]] = App.word[letters_to_reveal[index]];
             hint = ConvertHintToString(temp_hint);
             letters_to_reveal.splice(index, 1);
-            $(drawer_word).html("Hint&nbsp;&nbsp&nbsp;" + hint);
+            $(drawer_word).html("Hinweis&nbsp;&nbsp&nbsp;" + hint);
 
             function ConvertHintToArray(hint_string){
                 var hint_copy2 = hint_string;
