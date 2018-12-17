@@ -242,8 +242,8 @@
                 displayHelp.lobby = false;
                 }
             }
-            var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
-            var pointsList = "<li class='pure-menu-item'>Punkte</li>";
+            var userList = "<li class='pure-menu-item'>Users</li>";
+            var pointsList = "<li class='pure-menu-item'>Score</li>";
             for(var i = 0; i < data.length; i++){
                 userList = userList + "<li id='user"+data[i].mySocketID+"' class='pure-menu-item'>"+data[i].playerName+"</li>";
                 pointsList = pointsList + "<li id='"+data[i].mySocketID+"score' class='pure-menu-item'>"+data[i].myPoints+"</li>";
@@ -454,8 +454,8 @@
         gameEnded: function(data){
             //update points
             preventCursorRace = true;   //tells everyone to stop receiving cursor mousemove signals
-            var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
-            var pointsList = "<li class='pure-menu-item'>Punkte</li>";
+            var userList = "<li class='pure-menu-item'>Users</li>";
+            var pointsList = "<li class='pure-menu-item'>Score</li>";
             for(var i = 0; i < App.players.length; i++){
                 userList = userList + "<li id='user"+App.players[i].mySocketID+"' class='pure-menu-item'>"+App.players[i].playerName+"</li>";
                 pointsList = pointsList + "<li id='"+App.players[i].mySocketID+"score' class='pure-menu-item'>"+App.players[i].myPoints+"</li>";
