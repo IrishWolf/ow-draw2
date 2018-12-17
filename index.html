@@ -27,9 +27,9 @@
 <div id='page-container'>
     <div class="header">
         <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-            <a class="pure-menu-heading" href="">Draw!</a><a id = "current-word" class="pure-menu-heading drawer-step1"></a>
+            <a class="pure-menu-heading" href="">OW-Draw!</a><a id = "current-word" class="pure-menu-heading drawer-step1"></a>
             <a id = "room_number_header" class="pure-menu-heading" style='float:right;'></a>
-            <a href="#" id = "game_tutorial" class="pure-menu-heading" style='float:right;'>How to Play (?)</a>
+            <a href="#" id = "game_tutorial" class="pure-menu-heading" style='float:right;'>TUTORIAL (?)</a>
         </div>
     </div>
 
@@ -39,19 +39,19 @@
                 <div class = "pure-u-1-5 pure-u-md-9-24"></div>
                 <div class = "pure-u-3-5 start_menu pure-u-md-1-4">
             <div class="main_menu_background" id = "instruction">
-                <h1 class = "splash_titles">Play now!</h1>
-                <input class="splash-head step1" id = "player_name" type="text" placeholder="Your Name" required>
+                <h1 class = "splash_titles">Jetzt spielen!</h1>
+                <input class="splash-head step1" id = "player_name" type="text" placeholder="Dein Nickname" required>
 
                 <p>
-                    <button  id = "create_room" class="pure-button pure-button-primary step3">Create Room</button>
+                    <button  id = "create_room" class="pure-button pure-button-primary step3">Erstelle eine Lobby</button>
                 </p>
                 <p class="splash-subhead">
-                    OR
+                    ODER
                 </p>
                 <div class="step2">
-                    <input class="splash-head" id="room_id" type="text" placeholder="Game ID" required>
+                    <input class="splash-head" id="room_id" type="text" placeholder="LOBBY ID" required>
                     <p>
-                        <button id = "join_room" class="pure-button pure-button-primary">Join Game</button>
+                        <button id = "join_room" class="pure-button pure-button-primary">Lobby beitreten</button>
                     </p>
                 </div>
             </div>
@@ -72,7 +72,7 @@
             <div class = "pure-u-1-4 start_menu">
                 <div id="instructions" >
                 </div>
-                <p id = "players_waiting"></p> <button id = "start_game" class="pure-button pure-button-primary" >Start game! </button>
+                <p id = "players_waiting"></p> <button id = "start_game" class="pure-button pure-button-primary" >Spiel starten! </button>
             </div>
             <div class = "pure-u-4-24"></div>
             <div class ="pure-u-5-24 max_height">
@@ -87,8 +87,8 @@
             <div class = "pure-u-3-8"></div>
             <div class = "pure-u-1-4">
             <div class="drawer-step3 guesser-step3">
-                Since you joined a game in progress. Please wait for the current round to end.
-                <div><span>Time Left: </span><span id="timer"></span></div>
+                Da du gerade erst dazugekommen bist, warte bitte noch die laufende Runde ab.
+                <div><span>Verbleibende Zeit: </span><span id="timer"></span></div>
             </div>
             </div>
             <div class = "pure-u-4-24"></div>
@@ -105,10 +105,11 @@
             <div class = "pure-u-3-8"></div>
             <div class = "pure-u-1-4">
             <div class="drawer-step3 guesser-step3">
-                <div>The current Round is over.</div>
-                <div><span id="correct_count"></span><span>guessed the correct word.</span></div> 
-                <div id="next_drawer"></div><span> the next drawer </span>
-                <div><span>Time Left Until Next Round: </span><span id="timer"></span></div>
+                <div>Die Runde ist vorbei.</div>
+                <div><span id="correct_count"></span></div> 
+                <br>
+                <div id="next_drawer"></div>
+                <div><span>Zeit bis zur nächsten Runde: </span><span id="timer"></span></div>
             </div>
             </div>
             <div class = "pure-u-4-24"></div>
@@ -123,7 +124,7 @@
     <div class= "pure-g main_content">
         <div class="pure-u-4-24">
                     <div class="drawer-step3 guesser-step3">
-                        <span>Time Left: </span><span id="timer"></span>
+                        <span>Verbleibende Zeit: </span><span id="timer"></span>
                     </div>
                     <div id='your_role'></div>
                     <div class="guesser-step2" id='drawer_word'></div>
@@ -131,7 +132,7 @@
             <div class = "pure-u-15-24">
                 <div style= "position:fixed;top:0;left:0;" id="cursors"></div>
                 <canvas id="paper" style= "position:fixed;top:0;left:0;">
-                    Your browser needs to support canvas for this to work!
+                    Dein Browser muss Canvas unterstützen/erlauben um zu funktionieren!
                 </canvas>
             
             </div>
@@ -143,7 +144,7 @@
 <script id = "chat_template" type="text/template">
 <div class="main_chat_wrapper">
     <div id = "users" class="pure-menu pure-menu-scrollable custom-restricted lobby-step1 users_list">
-        <ul id='userlist' style="float:left" class="pure-menu-list">Users
+        <ul id='userlist' style="float:left" class="pure-menu-list">Spieler*innen
         </ul>    
         <ul id='score'  style="float:right" class="pure-menu-list">Score
         </ul>
@@ -158,7 +159,7 @@
                     <input class="pure-u-md-1-1 pure-u-lg-23-24 message_input"id="m" autocomplete="off" />
                   </div>
                   <div class="pure-u-md-1-1 pure-u-lg-1-3">
-                    <button class="pure-button pure-button-primary pure-u-1-1" id = "send_message">Send</button>
+                    <button class="pure-button pure-button-primary pure-u-1-1" id = "send_message">Abschicken</button>
                   </div>
                 </fieldset>
            </div>
@@ -170,16 +171,16 @@
         <div class="palette-case drawer-step2">
             <div id="dropupmenu">
                 <ul>
-                <li id="clear-canvas" class='drop-up-menu pure-button pure-button-primary'><center><a href="#">Clear Canvas</a></center></li>
+                <li id="clear-canvas" class='drop-up-menu pure-button pure-button-primary'><center><a href="#">alles löschen</a></center></li>
                 </ul>
                 <ul>
-                    <li class='drop-up-menu pure-button pure-button-primary'><center><a href="#">Thickness</a></center>
+                    <li class='drop-up-menu pure-button pure-button-primary'><center><a href="#">Zeichenstärke</a></center>
                             <ul>
-                                    <li class="palette-thickness" id="70_very-large"><a href="#">Very Large</a></li>
-                                    <li class="palette-thickness" id="15_large"><a href="#">Large</a></li>
-                                    <li class="palette-thickness" id="10_medium"><a href="#">Medium</a></li>
-                                    <li class="palette-thickness" id="5_small"><a href="#">Small</a></li>
-                                    <li class="palette-thickness" id="1_very-small"><a href="#">Very Small</li>
+                                    <li class="palette-thickness" id="70_very-large"><a href="#">sehr groß</a></li>
+                                    <li class="palette-thickness" id="15_large"><a href="#">groß</a></li>
+                                    <li class="palette-thickness" id="10_medium"><a href="#">normal</a></li>
+                                    <li class="palette-thickness" id="5_small"><a href="#">klein</a></li>
+                                    <li class="palette-thickness" id="1_very-small"><a href="#">sehr klein</li>
                             </ul>
                     </li>
                 </ul>
