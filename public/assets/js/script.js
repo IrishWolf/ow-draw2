@@ -125,8 +125,8 @@
     var PointAllocation = {
         FirstAnswer: 5,
         SubsequentAnswer: 2,
-        DrawerPoints: 2,
-        FailDrawDeduction: 0
+        DrawerPoints: 1,
+        FailDrawDeduction: 2
     };
     var App = {
         gameID:0,
