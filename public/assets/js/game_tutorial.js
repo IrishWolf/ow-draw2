@@ -4,21 +4,21 @@ function startHomeIntro(firstTime){
       intro.setOptions({
         steps: [
           {
-            intro: "Welcome to Online Pictionary. Since this is your first visit, we are going to walk you through on how to play. If at any point you get lost. The tutorial can be reopened using the 'How to Play(?)' button on the top menu."
+            intro: "Willkommen zu unserer online Version von Pictionary/Montagsmaler. Da dies dein erster Besuch hier ist, werde wir fix ein paar Dinge durchgehen, damit du weißt wie das ganze funktioniert. Wenn du das ganze Wiederholen möchtest, kannst du jederzeit auf 'Tutorial' klicken (rechts oben)."
           },
           {
             element: '.step1',
-            intro: "Input your name here.",
+            intro: "Gebe hier deinen Namen/Nick ein.",
             position: 'right'
           },
           {
             element: '.step2',
-            intro: "If you know the lobby GameID, input it here and click the join game button.",
+            intro: "Wenn dir die Nummer der Lobby bekannt ist, gib sie hier ein und Klicke auf 'Beitreten'.",
             position: 'right'
           },
           {
             element: '.step3',
-            intro: 'You can also create your own lobby.',
+            intro: 'Du kannst natürlich auch jederzeit eine eigene Lobby aufmachen.',
             position: 'right'
           }
         ]
@@ -32,17 +32,17 @@ function startHomeIntro(firstTime){
         steps: [
           {
             element: '.step1',
-            intro: "Input your name here.",
+            intro: "Gebe hier deinen Namen/Nick ein.",
             position: 'right'
           },
           {
             element: '.step2',
-            intro: "If you know the lobby GameID, input it here and click the join game button.",
+            intro: "Wenn dir die Nummer der Lobby bekannt ist, gib sie hier ein und Klicke auf 'Beitreten'.",
             position: 'right'
           },
           {
             element: '.step3',
-            intro: 'You can also create your own lobby.',
+            intro: 'Du kannst natürlich auch jederzeit eine eigene Lobby aufmachen.',
             position: 'right'
           }
         ]
@@ -55,21 +55,21 @@ function startGuesserIntro(){
     intro.setOptions({
       steps: [
         {
-          intro: "You are a guesser. As a guesser, you receive 5 points for being the first person to guess the correct word. Two points if you are not the first person."
+          intro: "Du rätst dieses Mal. Du erhälst 5 Punkte, wenn du als erstes das Wort errätst, Zwei Punkte, wenn du es als Zweites errätst bevor die Zeit abgelaufen ist."
         },
         {
           element: '.guesser-step1',
-          intro: "Input your guesses into the chat.",
+          intro: "Schreibe deine Vermutung einfach in den Chat.",
           position: 'left'
         },
         {
           element: '.guesser-step2',
-          intro: "This tells you how many letters are in the word",
+          intro: "Die _ zeigen die dir Zeichenanzahl.",
           position: 'right'
         },
         {
           element: '.guesser-step3',
-          intro: "This is the time remaining in the round.",
+          intro: "Das ist die verbleibende Zeit.",
           position: 'right'
         }
       ]
@@ -81,21 +81,21 @@ function startDrawerIntro(){
     intro.setOptions({
       steps: [
         {
-          intro: "You are a Drawer. As the drawer, you receive one point for each correct guess. You lose two points if no one guesses the correct word",
+          intro: "Jetzt darfst du zeichnen. Du erhälst jedes mal einen Punkt, wenn dein Meisterwerk korrekt erraten wurde. Du verlierst jedoch 2 Punkte, wenn niemand es herausfinden konnte.",
         },
         {
           element: '.drawer-step1',
-          intro: "This is the word you are trying to draw",
+          intro: "Dies ist das Wort, welches du zeichnen musst.",
           position: 'bottom'
         },
         {
           element: '.drawer-step2',
-          intro: "You can choose from a palette of colours and different thickness",
+          intro: "Du hast die Auswahl von einer Palette an Farben und Linienstärke.",
           position: 'top'
         },
         {
           element: '.drawer-step3',
-          intro: 'This is the time remaining for the current round',
+          intro: 'Dies ist die Restzeit der Runde.',
           position: 'right'
         }
       ]
@@ -107,16 +107,16 @@ function startLobbyIntro(){
     intro.setOptions({
       steps: [
         {
-          intro: "Welcome to the Game Lobby",
+          intro: "Willkommen in der Lobby",
         },
         {
           element: '.lobby-step1',
-          intro: "Here is the list of people in your lobby",
+          intro: "Hier sind deine Mitspieler*innen.",
           position: 'left'
         },
         {
           element: '.lobby-step2',
-          intro: "This is the lobby chat",
+          intro: "Das ist der Lobby-Chat.",
           position: 'left'
         }
       ]
