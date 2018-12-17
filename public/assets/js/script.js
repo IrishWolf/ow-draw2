@@ -167,7 +167,7 @@
             window.onunload = App.onUserLeave;
         },
         onCreateClick: function(){
-            data={playerName:$('#player_name').val() || 'Pleb',
+            data={playerName:$('#player_name').val() || 'Pleb#'+Math.floor(Math.random() * (9999 - 1000) + 1000),
                   myPoints: 0,
                   hasAlreadyWon: false,
                   guessedCorrectly: false
