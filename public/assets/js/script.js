@@ -2,10 +2,7 @@
 // TODO: Allow server to handle the random number generator so the revealed letters are equal among all devices
     var IO = {
         init : function(){
-            //var url = "http://localhost:5000";
-            var url = 'https://ow-draw.herokuapp.com/';
-            //var url = 'https://ancient-fjord-8441.herokuapp.com';
-            //var url = 'https://129.97.134.17:5000;'
+            var url = 'http://ow-draw.herokuapp.com/';
             IO.socket = io.connect(url);
             IO.bindEvents();
 
@@ -170,7 +167,7 @@
             window.onunload = App.onUserLeave;
         },
         onCreateClick: function(){
-            data={playerName:$('#player_name').val() || 'anon',
+            data={playerName:$('#player_name').val() || 'Pleb',
                   myPoints: 0,
                   hasAlreadyWon: false,
                   guessedCorrectly: false
