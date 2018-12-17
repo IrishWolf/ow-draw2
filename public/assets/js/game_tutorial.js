@@ -55,7 +55,7 @@ function startGuesserIntro(){
     intro.setOptions({
       steps: [
         {
-          intro: "Du rätst dieses Mal. Du erhälst 5 Punkte, wenn du als erstes das Wort errätst, Zwei Punkte, wenn du es als Zweites errätst bevor die Zeit abgelaufen ist."
+          intro: "Du rätst dieses Mal. Du erhälst 5 Punkte wenn du als erstes das Wort errätst und Zwei Punkte wenn du es danach errätst, bevor die Zeit abgelaufen ist."
         },
         {
           element: '.guesser-step1',
@@ -81,7 +81,7 @@ function startDrawerIntro(){
     intro.setOptions({
       steps: [
         {
-          intro: "Jetzt darfst du zeichnen. Du erhälst jedes mal einen Punkt, wenn dein Meisterwerk korrekt erraten wurde. Du verlierst jedoch 2 Punkte, wenn niemand es herausfinden konnte.",
+          intro: "Jetzt darfst du zeichnen. Du erhälst jedes mal einen Punkt, wenn dein Meisterwerk korrekt erraten wurde. Du verlierst jedoch keine Punkte, wenn niemand es herausfinden konnte.",
         },
         {
           element: '.drawer-step1',
