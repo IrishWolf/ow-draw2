@@ -63,7 +63,7 @@ function playerJoinGame(data) {
         io.sockets.in(data.gameID).emit('playerJoinedRoom', data);
 
     } else {
-        this.emit('error',{message: "This room does not exist."} );
+        this.emit({message: "This room does not exist."});
     }
     if (rooms[gameID] == undefined){
         rooms[gameID] = "waiting";
